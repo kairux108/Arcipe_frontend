@@ -1,189 +1,176 @@
-/* --- GLOBAL RESET & FONT --- */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
+/* 1. Global Reset - REMOVES ALL GAPS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-html, body, #root {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
-
-/* --- CONTAINER --- */
-.futuristic-container {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* Takes full viewport height */
-  background: #050505;
+/* 2. Full Screen Background Container */
+.auth-wrapper {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  justify-content: center; /* Horizontally centers the box */
-  align-items: center;     /* Vertically centers the box */
+  flex-direction: column;
   overflow: hidden;
-  font-family: 'Orbitron', sans-serif;
-}
-
-/* --- ANIMATED ORBS --- */
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
-}
-
-.orb-1 {
-  width: 400px;
-  height: 400px;
-  background: rgba(0, 212, 255, 0.15);
-  top: -100px;
-  left: -100px;
-  animation: drift 20s infinite alternate;
-}
-
-.orb-2 {
-  width: 300px;
-  height: 300px;
-  background: rgba(121, 40, 202, 0.2);
-  bottom: -50px;
-  right: -50px;
-  animation: drift 15s infinite alternate-reverse;
-}
-
-@keyframes drift {
-  from { transform: translate(0, 0); }
-  to { transform: translate(100px, 100px); }
-}
-
-/* --- GLASS BOX --- */
-.glass-box {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 400px; /* Responsive cap */
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  margin: 20px; /* Safety margin for small screens */
-}
-
-.cyber-line {
-  width: 50px;
-  height: 4px;
-  background: #00d4ff;
-  margin: 0 auto 15px;
-  box-shadow: 0 0 10px #00d4ff;
-}
-
-h2 {
-  color: #fff;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-
-p {
-  color: #666;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-}
-
-/* --- INPUTS --- */
-.input-group {
-  position: relative;
-  margin-bottom: 35px;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 1rem;
-  color: #fff;
-  border: none;
-  border-bottom: 1px solid #333;
-  outline: none;
-  background: transparent;
-  transition: 0.5s;
-}
-
-.input-group label {
-  position: absolute;
-  top: 10px;
+  
+  /* UPDATED: Modern Dark Gradient */
+  background: radial-gradient(circle at top right, #1e293b, #0f172a, #020617); 
+  background-size: cover;
+  position: fixed;
+  top: 0;
   left: 0;
-  color: #666;
-  pointer-events: none;
-  transition: 0.4s ease;
-  text-transform: uppercase;
-  font-size: 0.75rem;
 }
 
-/* Floating Label Logic */
-.input-group input:focus ~ label,
-.input-group input:not(:placeholder-shown) ~ label {
-  top: -18px;
-  left: 0;
-  color: #00d4ff;
-  font-size: 0.7rem;
-}
-
-.input-group .bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #00d4ff;
-  transition: 0.5s;
-  box-shadow: 0 0 10px #00d4ff;
-}
-
-.input-group input:focus ~ .bar {
+/* 3. Navbar Styling */
+.navbar {
   width: 100%;
+  padding: 30px 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 10;
 }
 
-/* --- NEON BUTTON --- */
-.neon-btn {
-  background: transparent;
-  color: #00d4ff;
-  padding: 15px 30px;
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  font-weight: bold;
-  letter-spacing: 3px;
-  cursor: pointer;
-  transition: 0.5s;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  margin-top: 10px;
+.nav-links {
+  display: flex;
+  gap: 30px;
+  margin-right: 30px;
 }
 
-.neon-btn:hover {
-  background: #00d4ff;
-  color: #050505;
-  box-shadow: 0 0 10px #00d4ff, 0 0 40px #00d4ff;
-}
-
-/* --- FOOTER --- */
-.box-footer a {
-  display: inline-block;
-  margin-top: 25px;
-  color: #444;
+.nav-links a {
+  color: #94a3b8; /* UPDATED: Muted gray for dark mode */
   text-decoration: none;
-  font-size: 0.7rem;
+  font-size: 14px;
+  font-weight: 500;
   letter-spacing: 1px;
   transition: 0.3s;
 }
 
-.box-footer a:hover {
-  color: #00d4ff;
-  text-shadow: 0 0 5px #00d4ff;
+.nav-links a:hover {
+  color: #fff; /* Highlight on hover */
+}
+
+.nav-login-btn {
+  background: transparent;
+  border: 1px solid #334155; /* UPDATED: Subtle border */
+  color: #fff;
+  padding: 8px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-login-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 4. Perfect Centering Fix */
+.center-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+/* 5. Glassmorphism Card */
+.glass-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 50px 40px;
+  /* UPDATED: Darker frosting effect */
+  background: rgba(15, 23, 42, 0.6); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: #fff;
+}
+
+.glass-card h1 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* Form Elements */
+.input-box {
+  position: relative;
+  /* UPDATED: Subtle line color */
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.2); 
+  margin-bottom: 30px;
+  transition: 0.3s;
+}
+
+.input-box:focus-within {
+  border-bottom-color: #3b82f6; /* Accent color on focus */
+}
+
+.input-box input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  padding: 10px 30px 10px 5px;
+  font-size: 16px;
+}
+
+.input-box input::placeholder {
+  color: #64748b; /* UPDATED: Darker placeholder */
+}
+
+.icon {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  opacity: 0.6;
+}
+
+.row-options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 35px;
+  color: #94a3b8;
+}
+
+.row-options a {
+  color: #3b82f6; /* UPDATED: Modern blue accent */
+  text-decoration: none;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  /* UPDATED: Solid modern blue */
+  background: #3b82f6; 
+  border: none;
+  border-radius: 8px; /* Slightly more square/modern */
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+}
+
+.btn-login:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.signup-link {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.signup-link a {
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
 }

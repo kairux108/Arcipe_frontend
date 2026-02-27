@@ -1,71 +1,49 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import './Login.css';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (email && password) {
-      // Add a small delay for a "processing" feel if desired
-      navigate('/dashboard');
-    }
-  };
-
   return (
-    <div className="futuristic-container">
-      {/* Animated background elements */}
-      <div className="orb orb-1"></div>
-      <div className="orb orb-2"></div>
-
-      <div className="glass-box">
-        <div className="box-header">
-          <div className="cyber-line"></div>
-          <h2>Login</h2>
-          <p>Initialize secure session</p>
+    <div className="auth-wrapper">
+      {/* 1. Navbar */}
+      <nav className="navbar">
+        <div className="nav-links">
+          <a href="#">HOME</a>
+          <a href="#">ABOUT</a>
+          <a href="#">SERVICE</a>
+          <a href="#">CONTACT</a>
         </div>
+        <button className="nav-login-btn">LOGIN</button>
+      </nav>
 
-        <form onSubmit={handleLogin} className="cyber-form">
-          <div className="input-group">
-            <input 
-              type="email" 
-              required 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder=" " 
-            />
-            <label>Operator Email</label>
-            <div className="bar"></div>
-          </div>
+      {/* 2. Centered Content Container */}
+      <main className="center-container">
+        <div className="glass-card">
+          <h1>LOGIN</h1>
+          
+          <form className="form-group">
+            <div className="input-box">
+              <input type="email" placeholder="Email" required />
+              <span className="icon">📧</span>
+            </div>
 
-          <div className="input-group">
-            <input 
-              type="password" 
-              required 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder=" " 
-            />
-            <label>Password</label>
-            <div className="bar"></div>
-          </div>
+            <div className="input-box">
+              <input type="password" placeholder="Password" required />
+              <span className="icon">🔒</span>
+            </div>
 
-          <button type="submit" className="neon-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            LOGIN
-          </button>
-        </form>
+            <div className="row-options">
+              <label><input type="checkbox" /> Remember Me</label>
+              <a href="#">Forgot Password?</a>
+            </div>
 
-        <div className="box-footer">
-          <a href="#">ENCRYPTED RECOVERY</a>
+            <button type="submit" className="btn-login">Login</button>
+
+            <p className="signup-link">
+              Don't have an account? <a href="#">Register</a>
+            </p>
+          </form>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
