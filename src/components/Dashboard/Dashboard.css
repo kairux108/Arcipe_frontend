@@ -1,0 +1,119 @@
+/* 1. FORCE NO GAPS AT ALL */
+html, body, #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Stops that annoying bottom scrollbar */
+  background-color: #020617;
+}
+
+/* 2. THE MAIN WRAPPER */
+.dashboard-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%, #020617 100%);
+  color: #fff;
+}
+
+/* 3. SIDEBAR - FIXED TO THE LEFT EDGE */
+.sidebar {
+  width: 300px; /* Slightly wider to feel "filled" */
+  height: 100%;
+  background: rgba(10, 15, 30, 0.7);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 60px 40px;
+  flex-shrink: 0;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #3b82f6;
+  margin-bottom: 80px;
+  letter-spacing: 5px;
+}
+
+/* FIX: Forces links to be vertical and spaced out */
+.side-links {
+  display: flex;
+  flex-direction: column; 
+  gap: 25px;
+}
+
+.side-links a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 15px 25px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.side-links a.active {
+  background: #1e293b;
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* 4. MAIN CONTENT - CENTERED AND HUGE */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical fill */
+  align-items: center;     /* Horizontal fill */
+  padding: 0 80px;
+}
+
+.dash-header h2 {
+  font-size: 4rem; /* Massive header to fill the space */
+  margin: 0;
+  font-weight: 800;
+}
+
+.user-role {
+  color: #3b82f6;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  display: block;
+}
+
+/* 5. STATS - GRID THAT FILLS THE WIDTH */
+.stats-grid {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 80px;
+}
+
+.stat-card {
+  flex: 1; /* This makes cards fill the width */
+  background: rgba(255, 255, 255, 0.02);
+  padding: 60px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.status-online {
+  color: #10b981; /* High contrast green */
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.logout-btn {
+  margin-top: auto;
+  background: #1e293b;
+  color: #fff;
+  border: 1px solid #334155;
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
