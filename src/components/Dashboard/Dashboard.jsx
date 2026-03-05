@@ -1,29 +1,17 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar';
 import './Dashboard.css';
 
 function Dashboard() {
-  const navigate = useNavigate();
-
   return (
     <div className="dashboard-wrapper">
-      <aside className="sidebar">
-        <h1 className="logo">ARCIPE</h1>
-        <nav className="side-links">
-          <a href="#" className="active">Dashboard</a>
-          <a href="#">Projects</a>
-          <a href="#">Team</a>
-          <a href="#">Settings</a>
-        </nav>
-        <button className="logout-btn" onClick={() => navigate('/')}>
-          Logout
-        </button>
-      </aside>
-
+      <Sidebar /> 
+      
       <main className="main-content">
         <div className="dash-header">
-          <h2>Welcome Back, Operator</h2>
-          <p className="user-role">Admin</p>
+          <h2>Welcome Back,</h2>
+          <h2>Operator</h2>
+          <span className="user-role">Admin</span>
         </div>
 
         <div className="stats-grid">
